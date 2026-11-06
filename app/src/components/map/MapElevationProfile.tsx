@@ -257,6 +257,9 @@ export function MapElevationProfile({ className = '', exportFrame = null }: MapE
     ? {
         kind: sectionElevationChange >= 0 ? 'climb' as const : 'descent' as const,
         change: `${sectionElevationChange >= 0 ? '+' : '-'}${formatElevation(Math.abs(sectionElevationChange), settings.unitSystem)}`,
+        averageGrade: focusedSection.distance > 0
+          ? (sectionElevationChange / focusedSection.distance * 100).toFixed(1)
+          : null,
         start: formatElevation(
           sectionStartElevation,
           settings.unitSystem,

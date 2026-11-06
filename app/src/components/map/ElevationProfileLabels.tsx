@@ -1,4 +1,5 @@
 import type { ElevationSectionMetrics } from './ElevationProfileChart';
+import { useI18n } from '@/i18n/useI18n';
 
 interface ElevationProfileLabelsProps {
   sectionMetrics: ElevationSectionMetrics | null;
@@ -31,6 +32,7 @@ export function ElevationProfileLabels({
   transportMode,
   tall,
 }: ElevationProfileLabelsProps) {
+  const { t } = useI18n();
   if (sectionMetrics) {
     return (
       <div
@@ -44,6 +46,15 @@ export function ElevationProfileLabels({
           style={{ textShadow: '0 2px 7px rgba(0, 0, 0, 0.9)' }}
         >
           {sectionMetrics.change}
+          {sectionMetrics.averageGrade !== null && (
+            <span
+              data-export-elevation-average-grade-label
+              className={`ml-1.5 font-semibold ${tall ? 'text-[13px]' : 'text-[10px]'}`}
+              title={t('settings.averageGrade')}
+            >
+              {t('settings.averageGradeShort')} {sectionMetrics.averageGrade}%
+            </span>
+          )}
         </span>
         <span
           data-export-elevation-start-label

@@ -5,6 +5,7 @@ import type { ElevationProfileGeometry } from './elevationProfileGeometry';
 export interface ElevationSectionMetrics {
   kind: ElevationFocusSection['kind'];
   change: string;
+  averageGrade: string | null;
   start: string;
   end: string;
   distance: string;
@@ -56,6 +57,7 @@ export function ElevationProfileChart({
       data-export-elevation-marker-x={markerX}
       data-export-elevation-focus-amount={focusAmount}
       data-export-elevation-change={sectionMetrics?.change}
+      data-export-elevation-average-grade={sectionMetrics?.averageGrade ?? undefined}
       data-export-elevation-start={sectionMetrics?.start}
       data-export-elevation-end={sectionMetrics?.end}
       data-export-elevation-distance={sectionMetrics?.distance}
