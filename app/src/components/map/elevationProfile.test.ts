@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { getElevationAtProgress } from './elevationProfile';
+import { getAverageGradeAtProgress, getElevationAtProgress } from './elevationProfile';
 
 describe('elevation profile interpolation', () => {
   const points = [
@@ -25,5 +25,27 @@ describe('elevation profile interpolation', () => {
       { progress: 0, elevation: 200 },
       { progress: 1, elevation: 300 },
     ], 0.5)).toBe(250);
+  });
+});
+
+describe('elevation profile average grade', () => {
+  const points = [
+    { progress: 0, distance: 0, elevation: 10 },
+    { progress: 0.25, distance: 100, elevation: 15 },
+    { progress: 0.5, distance: 200, elevation: 20 },
+    { progress: 0.75, distance: 300, elevation: 25 },
+    { progress: 1, distance: 400, elevation: 30 },
+  ];
+
+  it('calculates the average grade across a 200 m window around the marker', () => {
+    expect(getAverageGradeAtProgress(points, 0.5)).toBeCloseTo(5);
+  });
+
+  it('returns no grade at the segment endpoints or without enough distance', () => {
+    expect(getAverageGradeAtProgress(points, 0)).toBeNull();
+    expect(getAverageGradeAtProgress([
+      { progress: 0, distance: 0, elevation: 10 },
+      { progress: 1, distance: 80, elevation: 20 },
+    ], 0.5)).toBeNull();
   });
 });

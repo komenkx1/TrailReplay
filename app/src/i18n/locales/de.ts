@@ -498,7 +498,7 @@ export const de = {
     paceModeCumulative: 'Gesamt',
     paceModePerKm: 'Pro km',
     showElevationProfile: 'Höhenprofil',
-    averageGrade: 'Durchschnittliche Steigung', averageGradeShort: 'Ø',
+    averageGrade: 'Durchschnittliche Steigung', averageGradeShort: 'Ø', averageGradeWindowHint: 'Durchschnittliche Steigung über 200 m um den Routenmarker.',
     elevationProfilePerRoute: 'Profil pro Route', elevationProfilePerRouteHint: 'Zeigt während der Wiedergabe jede Route einzeln.',
     dynamicElevationProfile: 'Dynamische Abschnitte',
     dynamicElevationProfileHint: 'Fokussiert während der Wiedergabe automatisch die markantesten längeren Anstiege und Abfahrten und zeigt ihre durchschnittliche Steigung.',

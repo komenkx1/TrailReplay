@@ -4,7 +4,7 @@ import { useComputedJourney } from '@/hooks/useComputedJourney';
 import { convertElevation, formatDistance, formatElevation } from '@/utils/units';
 import type { CropPreviewMetrics } from '@/utils/crop';
 import { getDynamicElevationViewport } from './dynamicElevationViewport';
-import { getElevationAtProgress } from './elevationProfile';
+import { getAverageGradeAtProgress, getElevationAtProgress } from './elevationProfile';
 import { detectElevationFocusSections } from './elevationSections';
 import { ElevationSectionEditor } from './ElevationSectionEditor';
 import { ElevationProfileChart } from './ElevationProfileChart';
@@ -118,7 +118,7 @@ export function MapElevationProfile({ className = '', exportFrame = null }: MapE
   // SVG `d` string rebuild on every animation frame.
   const progressData = useMemo(() => {
     if (!profileData || playback.progress <= 0) {
-      return { currentElevation: 0, markerX: 0, currentColor: trailStyle.trailColor };
+      return { currentElevation: 0, currentGrade: null, markerX: 0, currentColor: trailStyle.trailColor };
     }
 
     const { svgWidth, pointsBySegment } = profileData;
@@ -144,8 +144,11 @@ export function MapElevationProfile({ className = '', exportFrame = null }: MapE
     const currentElevation = currentPoints
       ? getElevationAtProgress(currentPoints, playback.progress)
       : 0;
+    const currentGrade = currentPoints
+      ? getAverageGradeAtProgress(currentPoints, playback.progress)?.toFixed(1) ?? null
+      : null;
 
-    return { currentElevation, markerX: progressX, currentColor };
+    return { currentElevation, currentGrade, markerX: progressX, currentColor };
   }, [profileData, playback.progress, currentTrackColor, trailStyle.trailColor, isInTransport, currentSegment, routeTiming, tracks]);
 
   const routeBounds = useMemo(() => {
@@ -187,7 +190,7 @@ export function MapElevationProfile({ className = '', exportFrame = null }: MapE
     normalizedPoints,
     segmentPaths,
   } = profileData;
-  const { currentElevation, markerX, currentColor } = progressData;
+  const { currentElevation, currentGrade, markerX, currentColor } = progressData;
   const elevUnit = settings.unitSystem === 'metric' ? 'm' : 'ft';
 
   const formattedCurrentElev = Math.round(convertElevation(currentElevation, settings.unitSystem));
@@ -318,6 +321,7 @@ export function MapElevationProfile({ className = '', exportFrame = null }: MapE
           progress={playback.progress}
           focusAmount={focusAmount}
           sectionMetrics={sectionMetrics}
+          currentGrade={currentGrade}
           sectionHighlights={sectionHighlights}
           segmentTimings={segmentTimings}
           routeTimingMode={routeTimingMode}
@@ -340,6 +344,7 @@ export function MapElevationProfile({ className = '', exportFrame = null }: MapE
           progress={playback.progress}
           markerPosition={markerPosition}
           currentElevation={formattedCurrentElev}
+          currentGrade={currentGrade}
           elevationUnit={elevUnit}
           transportMode={isInTransport ? currentSegment?.segment.transportMode ?? null : null}
           tall={isNonWideExportPreview}

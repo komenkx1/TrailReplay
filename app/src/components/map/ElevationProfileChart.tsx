@@ -25,6 +25,7 @@ interface ElevationProfileChartProps {
   progress: number;
   focusAmount: number;
   sectionMetrics: ElevationSectionMetrics | null;
+  currentGrade: string | null;
   sectionHighlights: ElevationSectionHighlight[];
   segmentTimings: SegmentTiming[];
   routeTimingMode: 'recorded' | 'uniform';
@@ -40,6 +41,7 @@ export function ElevationProfileChart({
   progress,
   focusAmount,
   sectionMetrics,
+  currentGrade,
   sectionHighlights,
   segmentTimings,
   routeTimingMode,
@@ -57,7 +59,7 @@ export function ElevationProfileChart({
       data-export-elevation-marker-x={markerX}
       data-export-elevation-focus-amount={focusAmount}
       data-export-elevation-change={sectionMetrics?.change}
-      data-export-elevation-average-grade={sectionMetrics?.averageGrade ?? undefined}
+      data-export-elevation-average-grade={sectionMetrics?.averageGrade ?? currentGrade ?? undefined}
       data-export-elevation-start={sectionMetrics?.start}
       data-export-elevation-end={sectionMetrics?.end}
       data-export-elevation-distance={sectionMetrics?.distance}

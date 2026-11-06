@@ -498,7 +498,7 @@ export const ca = {
     paceModeCumulative: 'Global',
     paceModePerKm: 'Per km',
     showElevationProfile: 'Perfil d\'altitud',
-    averageGrade: 'Pendent mitjà', averageGradeShort: 'mitj.',
+    averageGrade: 'Pendent mitjà', averageGradeShort: 'mitj.', averageGradeWindowHint: 'Pendent mitjà en 200 m al voltant del marcador de ruta.',
     elevationProfilePerRoute: 'Perfil per ruta', elevationProfilePerRouteHint: 'Mostra cada ruta per separat durant la reproducció.',
     dynamicElevationProfile: 'Seccions dinàmiques',
     dynamicElevationProfileHint: 'Enfoca automàticament les pujades i baixades sostingudes més destacades i en mostra el pendent mitjà durant la reproducció.',

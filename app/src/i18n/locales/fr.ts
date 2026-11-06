@@ -498,7 +498,7 @@ export const fr = {
     paceModeCumulative: 'Globale',
     paceModePerKm: 'Par km',
     showElevationProfile: 'Profil d\'altitude',
-    averageGrade: 'Pente moyenne', averageGradeShort: 'moy.',
+    averageGrade: 'Pente moyenne', averageGradeShort: 'moy.', averageGradeWindowHint: 'Pente moyenne sur 200 m autour du marqueur de parcours.',
     elevationProfilePerRoute: 'Profil par parcours', elevationProfilePerRouteHint: 'Affiche chaque parcours séparément pendant la lecture.',
     dynamicElevationProfile: 'Sections dynamiques',
     dynamicElevationProfileHint: 'Cadre automatiquement les montées et descentes soutenues les plus marquantes et affiche leur pente moyenne pendant la lecture.',

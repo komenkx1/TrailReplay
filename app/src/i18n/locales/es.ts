@@ -498,7 +498,7 @@ export const es = {
     paceModeCumulative: 'Global',
     paceModePerKm: 'Por km',
     showElevationProfile: 'Perfil de elevación',
-    averageGrade: 'Pendiente media', averageGradeShort: 'media',
+    averageGrade: 'Pendiente media', averageGradeShort: 'media', averageGradeWindowHint: 'Pendiente media en 200 m alrededor del marcador de ruta.',
     elevationProfilePerRoute: 'Perfil por ruta', elevationProfilePerRouteHint: 'Muestra cada ruta por separado durante la reproducción.',
     dynamicElevationProfile: 'Tramos dinámicos',
     dynamicElevationProfileHint: 'Enfoca automáticamente las subidas y bajadas sostenidas más destacadas y muestra su pendiente media durante la reproducción.',

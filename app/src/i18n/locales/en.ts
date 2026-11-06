@@ -509,7 +509,7 @@ export const en = {
     paceModeCumulative: 'Overall',
     paceModePerKm: 'Per km',
     showElevationProfile: 'Elevation profile',
-    averageGrade: 'Average gradient', averageGradeShort: 'avg',
+    averageGrade: 'Average gradient', averageGradeShort: 'avg', averageGradeWindowHint: 'Average gradient over 200 m around the route marker.',
     elevationProfilePerRoute: 'Per-route profile', elevationProfilePerRouteHint: 'Show each route separately during playback.',
     dynamicElevationProfile: 'Dynamic sections',
     dynamicElevationProfileHint: 'Automatically focuses the strongest sustained climbs and descents, showing average gradient during playback.',

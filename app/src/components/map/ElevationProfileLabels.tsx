@@ -7,6 +7,7 @@ interface ElevationProfileLabelsProps {
   progress: number;
   markerPosition: number;
   currentElevation: number;
+  currentGrade: string | null;
   elevationUnit: string;
   transportMode: string | null;
   tall: boolean;
@@ -28,6 +29,7 @@ export function ElevationProfileLabels({
   progress,
   markerPosition,
   currentElevation,
+  currentGrade,
   elevationUnit,
   transportMode,
   tall,
@@ -110,6 +112,15 @@ export function ElevationProfileLabels({
           <span className={`font-semibold uppercase ${tall ? 'text-[14px]' : 'text-[9px]'} leading-none`}>
             {elevationUnit}
           </span>
+          {currentGrade !== null && (
+            <span
+              data-export-elevation-average-grade-label
+              className={`ml-1 font-semibold text-white ${tall ? 'text-[14px]' : 'text-[9px]'}`}
+              title={t('settings.averageGradeWindowHint')}
+            >
+              {t('settings.averageGradeShort')} {currentGrade}%
+            </span>
+          )}
         </span>
       )}
     </div>
