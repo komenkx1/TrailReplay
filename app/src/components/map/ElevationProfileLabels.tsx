@@ -52,9 +52,9 @@ export function ElevationProfileLabels({
             <span
               data-export-elevation-average-grade-label
               className={`ml-1.5 font-semibold ${tall ? 'text-[13px]' : 'text-[10px]'}`}
-              title={t('settings.averageGrade')}
+              title={t('annotations.averageGrade')}
             >
-              {t('settings.averageGradeShort')} {sectionMetrics.averageGrade}%
+              {t('annotations.averageGradeShort')} {sectionMetrics.averageGrade}%
             </span>
           )}
         </span>
@@ -116,9 +116,9 @@ export function ElevationProfileLabels({
             <span
               data-export-elevation-average-grade-label
               className={`ml-1 font-semibold text-white ${tall ? 'text-[14px]' : 'text-[9px]'}`}
-              title={t('settings.averageGradeWindowHint')}
+              title={t('annotations.averageGradeWindowHint')}
             >
-              {t('settings.averageGradeShort')} {currentGrade}%
+              {t('annotations.averageGradeShort')} {currentGrade}%
             </span>
           )}
         </span>
